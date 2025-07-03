@@ -1271,54 +1271,220 @@ function aceitarCookies() {
     }
 }
 </style>
+<style>
+    /* Estilos do botão flutuante - Mantidos para o design e animação */
+    .bpw-floating-button {
+        background: linear-gradient(135deg, #dc2626, #b91c1c) !important;
+        border: none !important;
+        box-shadow: 0 4px 20px rgba(220, 38, 38, 0.4) !important;
+        transition: all 0.3s ease !important;
+        animation: pulseRed 2s infinite !important;
+        /* Garante que o ícone padrão, se houver, seja visível no botão */
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    .bpw-floating-button:hover {
+        transform: scale(1.1) !important;
+        box-shadow: 0 6px 25px rgba(220, 38, 38, 0.6) !important;
+    }
+    @keyframes pulseRed {
+        0% { box-shadow: 0 4px 20px rgba(220, 38, 38, 0.4); }
+        50% { box-shadow: 0 4px 20px rgba(220, 38, 38, 0.7); }
+        100% { box-shadow: 0 4px 20px rgba(220, 38, 38, 0.4); }
+    }
+
+    /* REMOVIDO: Estilos de ::after e img/svg do floating button que eram para o avatar */
+
+    /* Variáveis de cores globais para o chat - Usadas pelo Botpress */
+    .bpw-chat-container {
+        --primary-color: #dc2626 !important; /* Cor principal (vermelho vibrante) */
+        --secondary-color: #b91c1c !important; /* Cor secundária (vermelho escuro) */
+        --text-color: #374151 !important; /* Cor padrão do texto (cinza escuro) */
+        --font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important; /* Fonte padrão, opcional */
+    }
+
+    /* Cabeçalho do chat */
+    .bpw-header {
+        background: linear-gradient(135deg, #dc2626, #b91c1c) !important; /* Gradiente vermelho */
+        color: white !important; /* Texto branco */
+        padding: 15px 20px !important; /* Ajusta o padding para melhor visual */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil no cabeçalho */
+        display: flex !important; /* Garante que o subtítulo se alinhe bem */
+        flex-direction: column !important; /* Alinha título e subtítulo verticalmente */
+        justify-content: center !important;
+    }
+
+    /* REMOVIDO: Estilos de ::before para avatar nas mensagens */
+
+    /* Bolhas de chat do bot */
+    .bpw-from-bot .bpw-chat-bubble {
+        background: white !important; /* Bolha branca */
+        border: 1px solid #e5e7eb !important; /* Borda cinza clara */
+        color: #374151 !important; /* Texto cinza escuro */
+        border-radius: 18px 18px 18px 4px !important; /* Bordas arredondadas com canto inferior esquerdo reto */
+        padding: 10px 15px !important;
+        margin-left: 10px !important; /* Ajusta margem se não houver avatar */
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Sombra sutil */
+    }
+
+    /* Bolhas de chat do usuário */
+    .bpw-from-user .bpw-chat-bubble {
+        background: #dc2626 !important; /* Bolha vermelha */
+        color: white !important; /* Texto branco */
+        border-radius: 18px 18px 4px 18px !important; /* Bordas arredondadas com canto inferior direito reto */
+        padding: 10px 15px !important;
+        margin-right: 10px !important; /* Ajusta margem */
+    }
+
+    /* Botões de resposta rápida (Quick Replies) */
+    .bpw-keyboard-quick_reply {
+        background: #f3f4f6 !important; /* Fundo cinza claro */
+        border: 1px solid #d1d5db !important; /* Borda cinza */
+        color: #374151 !important; /* Texto cinza escuro */
+        transition: all 0.2s ease-in-out !important; /* Transição suave */
+        border-radius: 20px !important; /* Mais arredondado */
+        padding: 8px 15px !important;
+        font-weight: 500 !important;
+        cursor: pointer;
+    }
+    .bpw-keyboard-quick_reply:hover {
+        background: #dc2626 !important; /* Fundo vermelho no hover */
+        color: white !important; /* Texto branco no hover */
+        border-color: #dc2626 !important; /* Borda vermelha no hover */
+        transform: translateY(-2px); /* Pequeno efeito de elevação */
+        box-shadow: 0 2px 5px rgba(220, 38, 38, 0.2);
+    }
+
+    /* Área de digitação da mensagem (Composer) */
+    .bpw-composer {
+        border-top: 1px solid #e5e7eb !important; /* Borda superior */
+        background: #fdfdfd !important; /* Fundo quase branco */
+        padding: 10px 15px !important;
+    }
+    .bpw-composer-inner {
+        background: white !important;
+        border-radius: 25px !important; /* Arredondado */
+        border: 1px solid #e0e0e0 !important;
+        padding: 5px 15px !important; /* Padding interno */
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05); /* Sombra interna sutil */
+    }
+    .bpw-composer-inner input {
+        color: #374151 !important;
+        font-size: 15px !important;
+        padding: 5px 0 !important;
+    }
+
+    /* Botão de envio de mensagem */
+    .bpw-send-button {
+        background: #dc2626 !important; /* Fundo vermelho */
+        border-radius: 50% !important; /* Circular */
+        width: 40px !important; /* Tamanho fixo */
+        height: 40px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        margin-left: 10px !important;
+        box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3);
+    }
+    .bpw-send-button:hover {
+        background: #b91c1c !important; /* Fundo vermelho escuro no hover */
+        transform: translateY(-1px);
+        box-shadow: 0 3px 10px rgba(220, 38, 38, 0.4);
+    }
+    .bpw-send-button svg {
+        fill: white !important; /* Ícone de envio branco */
+    }
+
+    /* Barra de rolagem das mensagens */
+    .bpw-msg-list::-webkit-scrollbar {
+        width: 6px;
+    }
+    .bpw-msg-list::-webkit-scrollbar-track {
+        background: #f1f5f9;
+    }
+    .bpw-msg-list::-webkit-scrollbar-thumb {
+        background: #dc2626;
+        border-radius: 3px;
+    }
+
+    /* Contador de mensagens não lidas no botão flutuante */
+    .bpw-floating-button .bpw-floating-button-unread {
+        background: #dc2626 !important; /* Fundo vermelho */
+        color: white !important; /* Texto branco */
+        border-radius: 50% !important;
+        min-width: 20px !important;
+        height: 20px !important;
+        font-size: 12px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        top: -5px !important; /* Ajuste a posição para cima */
+        right: -5px !important; /* Ajuste a posição para a direita */
+    }
+
+    /* Media query para dispositivos menores */
+    @media (max-width: 768px) {
+        .bpw-floating-button {
+            width: 50px !important; /* Botão menor em mobile */
+            height: 50px !important;
+        }
+        .bpw-header {
+            padding: 12px 15px !important;
+        }
+        .bpw-from-bot .bpw-chat-bubble,
+        .bpw-from-user .bpw-chat-bubble {
+            max-width: 85% !important; /* Ajuste para melhor leitura em telas pequenas */
+        }
+    }
+</style>
 
 <script src="https://cdn.botpress.cloud/webchat/v3.0/inject.js"></script>
 <script src="https://files.bpcontent.cloud/2025/06/28/07/20250628075911-Y6SX6D8I.js"></script>
 
 <script>
-window.addEventListener('load', function() {
-    setTimeout(function() {
-        const chatHeader = document.querySelector('.bpw-header-title');
-        if (chatHeader) {
-            chatHeader.innerHTML = '🚗 Pedrinho - AutoFácil Peças';
-        }
-        
-        const headerContainer = document.querySelector('.bpw-header');
-        if (headerContainer) {
-            const subtitle = document.createElement('div');
-            subtitle.innerHTML = 'Online • Especialista em peças automotivas';
-            subtitle.style.fontSize = '12px';
-            subtitle.style.opacity = '0.9';
-            subtitle.style.marginTop = '2px';
-            headerContainer.appendChild(subtitle);
-        }
-    }, 1000);
-});
+    // Configurações de inicialização do Botpress Webchat
+    window.botpressWebChat.init({
+        // Título principal do cabeçalho do chat
+        chatHeaderText: '🚗 AutoFácil Peças',
+        // Desabilita avatares do bot e do usuário se a versão do Botpress permitir
+        // Nem todas as versões respeitam 100% essas flags para ocultar.
+        // O CSS é mais forte se houver resquícios visuais.
+        showUserAvatar: false,
+        showBotAvatar: false,
+        // Você pode explorar outras opções na documentação do Botpress, como:
+        // containerWidth: '400px', // Define largura fixa para o chat
+        // containerHeight: '600px', // Define altura fixa para o chat
+        // autoOpen: true, // Abre o chat automaticamente
+        // layout: "fullscreen", // Modo fullscreen para o chat
+        // enableTranscriptDownload: true, // Opção de download de transcrição
+        // chatTheme: 'red', // Se houver temas pré-definidos que se aproximem
+    });
 
-function customizeBotpress() {
-    const observer = new MutationObserver(function(mutations) {
-        mutations.forEach(function(mutation) {
-            if (mutation.type === 'childList') {
-                const chatContainer = document.querySelector('.bpw-chat-container');
-                if (chatContainer && !chatContainer.classList.contains('autofacil-customized')) {
-                    chatContainer.classList.add('autofacil-customized');
-                    
-                    const header = chatContainer.querySelector('.bpw-header');
-                    if (header) {
-                        header.style.background = 'linear-gradient(135deg, #dc2626, #b91c1c)';
-                    }
+    // Adiciona o subtítulo ao cabeçalho após o chat ser renderizado
+    // Este script é necessário pois não há uma opção nativa para subtítulo no .init()
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            const chatHeader = document.querySelector('.bpw-header-title');
+            const headerContainer = document.querySelector('.bpw-header');
+
+            if (chatHeader && headerContainer) {
+                // Atualiza o título (caso o init() não seja suficiente ou para reforçar)
+                chatHeader.innerHTML = '🚗 AutoFácil Peças';
+
+                // Adiciona o subtítulo, verificando se já não existe para evitar duplicação
+                if (!headerContainer.querySelector('.bpw-subtitle')) {
+                    const subtitle = document.createElement('div');
+                    subtitle.innerHTML = 'Online • Especialista em peças automotivas';
+                    subtitle.style.fontSize = '12px';
+                    subtitle.style.opacity = '0.9';
+                    subtitle.style.marginTop = '2px';
+                    subtitle.classList.add('bpw-subtitle'); // Adiciona classe para identificação
+                    headerContainer.appendChild(subtitle);
                 }
             }
-        });
+        }, 1500); // Aumentei o delay para garantir que os elementos estejam carregados
     });
-    
-    observer.observe(document.body, {
-        childList: true,
-        subtree: true
-    });
-}
-
-document.addEventListener('DOMContentLoaded', customizeBotpress);
 </script>
     
 </body>
