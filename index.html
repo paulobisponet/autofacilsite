@@ -1093,6 +1093,45 @@ Enviado pelo site da AutoFácil Peças`;
             background: linear-gradient(135deg, #c53030 0%, #9c2626 100%);
         }
     </style>
+<!-- Código do banner de cookies -->
+<div id="cookie-banner" style="
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: orange;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    z-index: 9999;
+    display: none;
+">
+  Usamos cookies para garantir que você obtenha a melhor experiência em nosso site. 
+  <a href="/politica-de-privacidade" style="color: white; text-decoration: underline;">Política de privacidade</a>
+  <button onclick="aceitarCookies()" style="
+      background-color: #222;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin-left: 20px;
+      cursor: pointer;
+  ">Aceitar!</button>
+</div>
+
+<script>
+// Mostrar banner se cookies ainda não foram aceitos
+window.onload = function() {
+  if (!localStorage.getItem("cookiesAceitos")) {
+    document.getElementById("cookie-banner").style.display = "block";
+  }
+};
+
+function aceitarCookies() {
+  localStorage.setItem("cookiesAceitos", "true");
+  document.getElementById("cookie-banner").style.display = "none";
+}
+</script>
+
+    
 </body>
 </html>
                 
