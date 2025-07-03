@@ -1130,7 +1130,188 @@ function aceitarCookies() {
   document.getElementById("cookie-banner").style.display = "none";
 }
 </script>
+<!-- CHATBOT PEDRINHO AUTOFÁCIL PEÇAS - COLE ANTES DO </body> -->
 
+<style>
+.bpw-floating-button {
+    background: linear-gradient(135deg, #dc2626, #b91c1c) !important;
+    border: none !important;
+    box-shadow: 0 4px 20px rgba(220, 38, 38, 0.4) !important;
+    transition: all 0.3s ease !important;
+    animation: pulseRed 2s infinite !important;
+}
+
+.bpw-floating-button:hover {
+    transform: scale(1.1) !important;
+    box-shadow: 0 6px 25px rgba(220, 38, 38, 0.6) !important;
+}
+
+@keyframes pulseRed {
+    0% { box-shadow: 0 4px 20px rgba(220, 38, 38, 0.4); }
+    50% { box-shadow: 0 4px 20px rgba(220, 38, 38, 0.7); }
+    100% { box-shadow: 0 4px 20px rgba(220, 38, 38, 0.4); }
+}
+
+.bpw-floating-button img,
+.bpw-floating-button svg {
+    display: none !important;
+}
+
+.bpw-floating-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 45px;
+    height: 45px;
+    background-image: url('images/pedrinho-chat.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 1;
+}
+
+.bpw-chat-container {
+    --primary-color: #dc2626 !important;
+    --secondary-color: #b91c1c !important;
+    --text-color: #374151 !important;
+}
+
+.bpw-header {
+    background: linear-gradient(135deg, #dc2626, #b91c1c) !important;
+    color: white !important;
+}
+
+.bpw-from-bot .bpw-chat-bubble::before {
+    background-image: url('images/pedrinho-chat.png') !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 50% !important;
+    background-color: #f3f4f6 !important;
+}
+
+.bpw-from-bot .bpw-chat-bubble {
+    background: white !important;
+    border: 1px solid #e5e7eb !important;
+    color: #374151 !important;
+}
+
+.bpw-from-user .bpw-chat-bubble {
+    background: #dc2626 !important;
+    color: white !important;
+}
+
+.bpw-keyboard-quick_reply {
+    background: #f3f4f6 !important;
+    border: 1px solid #d1d5db !important;
+    color: #374151 !important;
+    transition: all 0.2s !important;
+}
+
+.bpw-keyboard-quick_reply:hover {
+    background: #dc2626 !important;
+    color: white !important;
+    border-color: #dc2626 !important;
+}
+
+.bpw-composer {
+    border-top: 1px solid #e5e7eb !important;
+}
+
+.bpw-composer-inner {
+    background: white !important;
+}
+
+.bpw-composer-inner input {
+    color: #374151 !important;
+}
+
+.bpw-send-button {
+    background: #dc2626 !important;
+}
+
+.bpw-send-button:hover {
+    background: #b91c1c !important;
+}
+
+.bpw-msg-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.bpw-msg-list::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+.bpw-msg-list::-webkit-scrollbar-thumb {
+    background: #dc2626;
+    border-radius: 3px;
+}
+
+.bpw-floating-button .bpw-floating-button-unread {
+    background: #dc2626 !important;
+    color: white !important;
+}
+
+@media (max-width: 768px) {
+    .bpw-floating-button::before {
+        width: 40px;
+        height: 40px;
+    }
+}
+</style>
+
+<script src="https://cdn.botpress.cloud/webchat/v3.0/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2025/06/28/07/20250628075911-Y6SX6D8I.js"></script>
+
+<script>
+window.addEventListener('load', function() {
+    setTimeout(function() {
+        const chatHeader = document.querySelector('.bpw-header-title');
+        if (chatHeader) {
+            chatHeader.innerHTML = '🚗 Pedrinho - AutoFácil Peças';
+        }
+        
+        const headerContainer = document.querySelector('.bpw-header');
+        if (headerContainer) {
+            const subtitle = document.createElement('div');
+            subtitle.innerHTML = 'Online • Especialista em peças automotivas';
+            subtitle.style.fontSize = '12px';
+            subtitle.style.opacity = '0.9';
+            subtitle.style.marginTop = '2px';
+            headerContainer.appendChild(subtitle);
+        }
+    }, 1000);
+});
+
+function customizeBotpress() {
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.type === 'childList') {
+                const chatContainer = document.querySelector('.bpw-chat-container');
+                if (chatContainer && !chatContainer.classList.contains('autofacil-customized')) {
+                    chatContainer.classList.add('autofacil-customized');
+                    
+                    const header = chatContainer.querySelector('.bpw-header');
+                    if (header) {
+                        header.style.background = 'linear-gradient(135deg, #dc2626, #b91c1c)';
+                    }
+                }
+            }
+        });
+    });
+    
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+}
+
+document.addEventListener('DOMContentLoaded', customizeBotpress);
+</script>
     
 </body>
 </html>
