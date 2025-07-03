@@ -1130,8 +1130,6 @@ function aceitarCookies() {
   document.getElementById("cookie-banner").style.display = "none";
 }
 </script>
-<!-- CHATBOT PEDRINHO AUTOFÁCIL PEÇAS - COLE ANTES DO </body> -->
-
 <style>
 .bpw-floating-button {
     background: linear-gradient(135deg, #dc2626, #b91c1c) !important;
@@ -1152,12 +1150,13 @@ function aceitarCookies() {
     100% { box-shadow: 0 4px 20px rgba(220, 38, 38, 0.4); }
 }
 
+/* CORREÇÃO: Avatar personalizado - método mais forte */
 .bpw-floating-button img,
 .bpw-floating-button svg {
     display: none !important;
 }
 
-.bpw-floating-button::before {
+.bpw-floating-button::after {
     content: '';
     position: absolute;
     top: 50%;
@@ -1165,11 +1164,12 @@ function aceitarCookies() {
     transform: translate(-50%, -50%);
     width: 45px;
     height: 45px;
-    background-image: url('images/pedrinho-chat.png');
+    background-image: url('https://raw.githubusercontent.com/seuusuario/seurepositorio/main/images/pedrinho-chat.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    z-index: 1;
+    z-index: 10;
+    border-radius: 50%;
 }
 
 .bpw-chat-container {
@@ -1183,21 +1183,29 @@ function aceitarCookies() {
     color: white !important;
 }
 
-.bpw-from-bot .bpw-chat-bubble::before {
-    background-image: url('images/pedrinho-chat.png') !important;
-    background-size: contain !important;
-    background-repeat: no-repeat !important;
-    background-position: center !important;
-    width: 32px !important;
-    height: 32px !important;
-    border-radius: 50% !important;
-    background-color: #f3f4f6 !important;
+/* CORREÇÃO: Avatar nas mensagens - método mais específico */
+.bpw-from-bot .bpw-chat-bubble-content::before,
+.bpw-from-bot .bpw-message-container::before {
+    content: '';
+    position: absolute;
+    left: -45px;
+    top: 0;
+    width: 32px;
+    height: 32px;
+    background-image: url('https://raw.githubusercontent.com/seuusuario/seurepositorio/main/images/pedrinho-chat.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    background-color: #f3f4f6;
+    border: 2px solid #dc2626;
 }
 
 .bpw-from-bot .bpw-chat-bubble {
     background: white !important;
     border: 1px solid #e5e7eb !important;
     color: #374151 !important;
+    margin-left: 45px !important;
 }
 
 .bpw-from-user .bpw-chat-bubble {
@@ -1257,7 +1265,7 @@ function aceitarCookies() {
 }
 
 @media (max-width: 768px) {
-    .bpw-floating-button::before {
+    .bpw-floating-button::after {
         width: 40px;
         height: 40px;
     }
