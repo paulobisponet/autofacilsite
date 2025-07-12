@@ -1,52 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-  <!-- Home -->
   <url>
     <loc>https://www.autofacilpecas.com.br/</loc>
     <lastmod>2025-07-12</lastmod>
-    <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
-
-  <!-- Página de produtos / catálogo -->
   <url>
     <loc>https://www.autofacilpecas.com.br/produtos</loc>
     <lastmod>2025-07-12</lastmod>
-    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- Serviços (troca de óleo, instalação, etc.) -->
   <url>
     <loc>https://www.autofacilpecas.com.br/servicos</loc>
     <lastmod>2025-07-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
-
-  <!-- Sobre / Quem somos (se houver) -->
   <url>
     <loc>https://www.autofacilpecas.com.br/sobre</loc>
     <lastmod>2025-07-12</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.7</priority>
   </url>
-
-  <!-- Contato -->
   <url>
     <loc>https://www.autofacilpecas.com.br/contato</loc>
     <lastmod>2025-07-12</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.6</priority>
   </url>
-
-  <!-- Política de privacidade / Termos -->
   <url>
     <loc>https://www.autofacilpecas.com.br/politica-de-privacidade</loc>
     <lastmod>2025-07-12</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <priority>0.5</priority>
   </url>
-
 </urlset>
